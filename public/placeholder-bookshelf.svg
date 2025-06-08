@@ -1,0 +1,32 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#F7FAFC"/>
+  <rect x="50" y="50" width="700" height="500" rx="8" fill="#E2E8F0"/>
+  <rect x="100" y="100" width="600" height="80" fill="#1A365D"/>
+  <rect x="100" y="200" width="600" height="80" fill="#1A365D"/>
+  <rect x="100" y="300" width="600" height="80" fill="#1A365D"/>
+  <rect x="100" y="400" width="600" height="80" fill="#1A365D"/>
+  
+  <!-- Books on first shelf -->
+  <rect x="120" y="110" width="40" height="60" rx="2" fill="#D69E2E"/>
+  <rect x="170" y="110" width="40" height="60" rx="2" fill="#2C5282"/>
+  <rect x="220" y="110" width="40" height="60" rx="2" fill="#4A5568"/>
+  <rect x="270" y="110" width="40" height="60" rx="2" fill="#D69E2E"/>
+  <rect x="320" y="110" width="40" height="60" rx="2" fill="#2C5282"/>
+  
+  <!-- Books on second shelf -->
+  <rect x="120" y="210" width="40" height="60" rx="2" fill="#2C5282"/>
+  <rect x="170" y="210" width="40" height="60" rx="2" fill="#4A5568"/>
+  <rect x="220" y="210" width="40" height="60" rx="2" fill="#D69E2E"/>
+  <rect x="270" y="210" width="40" height="60" rx="2" fill="#2C5282"/>
+  
+  <!-- Books on third shelf -->
+  <rect x="120" y="310" width="40" height="60" rx="2" fill="#4A5568"/>
+  <rect x="170" y="310" width="40" height="60" rx="2" fill="#D69E2E"/>
+  <rect x="220" y="310" width="40" height="60" rx="2" fill="#2C5282"/>
+  
+  <!-- Books on fourth shelf -->
+  <rect x="120" y="410" width="40" height="60" rx="2" fill="#D69E2E"/>
+  <rect x="170" y="410" width="40" height="60" rx="2" fill="#2C5282"/>
+  <rect x="220" y="410" width="40" height="60" rx="2" fill="#4A5568"/>
+  <rect x="270" y="410" width="40" height="60" rx="2" fill="#D69E2E"/>
+</svg>

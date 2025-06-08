@@ -1,103 +1,156 @@
-import Image from "next/image";
+import Link from 'next/link'
+import { BookOpen, Users, Heart, ArrowRight } from 'lucide-react'
+import Navigation from '@/components/Navigation'
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      <Navigation />
+      <main className="min-h-screen">
+        {/* Hero Section */}
+        <section className="relative h-screen flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10" />
+          <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <h1 className="text-5xl md:text-7xl font-serif font-bold text-primary mb-6">
+              大切な人の知的遺産を、
+              <br />
+              未来につなぐ
+            </h1>
+            <p className="text-xl md:text-2xl text-text-light mb-8 japanese-text">
+              本棚は、その人の知的世界そのもの。
+              <br />
+              あなたの本棚から、新しい出会いと継承が始まります。
+            </p>
+            <Link
+              href="/upload"
+              className="inline-flex items-center px-8 py-4 bg-primary text-white rounded-full text-lg font-medium hover:bg-primary-dark transition-colors shadow-lg"
+            >
+              体験を始める
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Link>
+          </div>
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
+        </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+        {/* Value Propositions */}
+        <section className="py-20 px-4 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-4xl font-serif font-bold text-center text-primary mb-16">
+              3つの価値
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center p-8 rounded-lg hover:shadow-lg transition-shadow">
+                <div className="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <BookOpen className="w-10 h-10 text-accent" />
+                </div>
+                <h3 className="text-2xl font-serif font-bold text-primary mb-4">
+                  発見
+                </h3>
+                <p className="text-text japanese-text">
+                  AIが本棚から読書傾向を分析。
+                  同じ興味を持つ人や、
+                  新しい本との出会いを創出します。
+                </p>
+              </div>
+              <div className="text-center p-8 rounded-lg hover:shadow-lg transition-shadow">
+                <div className="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Heart className="w-10 h-10 text-accent" />
+                </div>
+                <h3 className="text-2xl font-serif font-bold text-primary mb-4">
+                  継承
+                </h3>
+                <p className="text-text japanese-text">
+                  大切な人の蔵書を適切に継承。
+                  その人の知的世界を、
+                  必要とする人へつなぎます。
+                </p>
+              </div>
+              <div className="text-center p-8 rounded-lg hover:shadow-lg transition-shadow">
+                <div className="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Users className="w-10 h-10 text-accent" />
+                </div>
+                <h3 className="text-2xl font-serif font-bold text-primary mb-4">
+                  共有
+                </h3>
+                <p className="text-text japanese-text">
+                  質の高い知的コミュニティ。
+                  深い対話と学びが生まれる
+                  場を提供します。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* How it Works */}
+        <section className="py-20 px-4 bg-secondary">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl font-serif font-bold text-center text-primary mb-16">
+              使い方
+            </h2>
+            <div className="space-y-12">
+              <div className="flex items-center space-x-6">
+                <div className="flex-shrink-0 w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold">
+                  1
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-primary mb-2">
+                    本棚を撮影
+                  </h3>
+                  <p className="text-text japanese-text">
+                    スマートフォンで本棚の写真を撮影します。
+                    AIが自動で書籍を認識します。
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-6">
+                <div className="flex-shrink-0 w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold">
+                  2
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-primary mb-2">
+                    読書傾向を分析
+                  </h3>
+                  <p className="text-text japanese-text">
+                    蔵書データから、あなたの知的興味や専門分野を可視化します。
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-6">
+                <div className="flex-shrink-0 w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold">
+                  3
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-primary mb-2">
+                    新しい出会い
+                  </h3>
+                  <p className="text-text japanese-text">
+                    同じ興味を持つ人や、あなたにぴったりの本と出会えます。
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="text-center mt-12">
+              <Link
+                href="/upload"
+                className="inline-flex items-center px-8 py-4 bg-accent text-white rounded-full text-lg font-medium hover:bg-accent-dark transition-colors shadow-lg"
+              >
+                今すぐ始める
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="py-8 px-4 bg-primary text-white">
+          <div className="max-w-7xl mx-auto text-center">
+            <p className="japanese-text">
+              © 2024 知的遺産継承プラットフォーム. All rights reserved.
+            </p>
+          </div>
+        </footer>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+    </>
+  )
 }

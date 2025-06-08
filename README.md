@@ -1,36 +1,133 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 知的遺産継承プラットフォーム - プロトタイプ
 
-## Getting Started
+本棚の写真から書籍を自動認識し、読書傾向を分析、同じ興味を持つ人とのマッチングを行う知的コミュニティプラットフォームのプロトタイプです。
 
-First, run the development server:
+## 🎯 プロトタイプの目的
+
+- **理念検証**: 知的遺産保存・コミュニティ形成への共鳴度測定
+- **機能検証**: 本棚共有・マッチング機能への反応確認
+- **UX検証**: 直感的操作性と情感的価値の両立
+
+## 🚀 セットアップ
+
+### 1. 必要な環境
+- Node.js 18.0以上
+- npm または yarn
+
+### 2. インストール
+
+```bash
+# リポジトリのクローン
+git clone [repository-url]
+cd bookshelf-legacy
+
+# 依存関係のインストール
+npm install
+```
+
+### 3. 環境変数の設定
+
+`.env.example`を`.env.local`にコピーして、必要なAPIキーを設定してください：
+
+```bash
+cp .env.example .env.local
+```
+
+以下のAPIキーが必要です：
+- **Google Cloud Vision API**: 画像から文字認識を行うため
+- **Google Books API**: 書籍情報を取得するため
+
+### 4. 開発サーバーの起動
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+ブラウザで http://localhost:3000 を開いてください。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📱 主要機能
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. ランディングページ
+- サービスの理念と価値提案を表現
+- 「発見」「継承」「共有」の3つの価値を訴求
 
-## Learn More
+### 2. オンボーディング
+- 3ステップでサービスの使い方を説明
+- 理念への共感を醸成
 
-To learn more about Next.js, take a look at the following resources:
+### 3. 本棚撮影・認識
+- 本棚の写真をアップロード
+- AIが自動で書籍を認識（デモでは仮データ）
+- 認識結果の確認と修正
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4. 読書傾向分析
+- ジャンル分析（円グラフ）
+- よく読む著者TOP5
+- 知的興味マップ
+- 読書プロフィール
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 5. マッチング体験
+- 3名の仮想ユーザーとのマッチング
+- 共通書籍の可視化
+- おすすめ書籍の提案
+- つながる理由の説明
 
-## Deploy on Vercel
+## 🎨 デザインシステム
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### カラーパレット
+- **プライマリ**: #1a365d（深いネイビー）
+- **セカンダリ**: #f7fafc（温かいベージュ）
+- **アクセント**: #d69e2e（ゴールド）
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### フォント
+- **見出し**: Georgia（セリフ系）
+- **本文**: Inter（サンセリフ）
+- **日本語**: Noto Sans JP
+
+## 📁 プロジェクト構造
+
+```
+src/
+├── app/                 # Next.js App Router
+│   ├── page.tsx        # ランディングページ
+│   ├── onboarding/     # オンボーディング
+│   ├── upload/         # アップロード機能
+│   ├── analysis/       # 分析結果
+│   └── matching/       # マッチング
+├── components/         # 共通コンポーネント
+├── data/              # モックデータ
+├── lib/               # ユーティリティ
+└── types/             # TypeScript型定義
+```
+
+## 🔧 技術スタック
+
+- **フレームワーク**: Next.js 14 (App Router)
+- **言語**: TypeScript
+- **スタイリング**: Tailwind CSS
+- **UIライブラリ**: Lucide React (アイコン)
+- **チャート**: Recharts
+- **API連携**: axios
+
+## 📝 デモ用の制限事項
+
+- API認証は実装されていません（APIキー設定後に実装予定）
+- データはLocalStorageに保存（実際のDBは使用していません）
+- 画像認識は仮のデモデータを返します
+- ユーザー認証機能は未実装
+
+## 🚀 デプロイ
+
+Vercelへのデプロイが推奨されます：
+
+```bash
+# Vercel CLIをインストール
+npm i -g vercel
+
+# デプロイ
+vercel
+```
+
+## 📄 ライセンス
+
+プロトタイプのため、ライセンスは設定されていません。
