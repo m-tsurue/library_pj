@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { BookOpen, Users, Heart, ArrowRight } from 'lucide-react'
 import Navigation from '@/components/Navigation'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
 export default function Home() {
   return (
@@ -8,26 +10,25 @@ export default function Home() {
       <Navigation />
       <main className="min-h-screen">
         {/* Hero Section */}
-        <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10" />
-          <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-7xl font-serif font-bold text-primary mb-6">
+          <div className="relative z-10 text-center px-4 max-w-4xl mx-auto py-20">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-primary mb-6 leading-tight">
               大切な人の知的遺産を、
-              <br />
+              <br className="hidden sm:block" />
               未来につなぐ
             </h1>
-            <p className="text-xl md:text-2xl text-text-light mb-8 japanese-text">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-8 japanese-text max-w-3xl mx-auto">
               本棚は、その人の知的世界そのもの。
-              <br />
+              <br className="hidden sm:block" />
               あなたの本棚から、新しい出会いと継承が始まります。
             </p>
-            <Link
-              href="/upload"
-              className="inline-flex items-center px-8 py-4 bg-primary text-white rounded-full text-lg font-medium hover:bg-primary-dark transition-colors shadow-lg"
-            >
-              体験を始める
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
+            <Button asChild size="lg" className="rounded-full px-8 py-6 text-lg">
+              <Link href="/upload">
+                体験を始める
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+            </Button>
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
         </section>
@@ -39,45 +40,57 @@ export default function Home() {
               3つの価値
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center p-8 rounded-lg hover:shadow-lg transition-shadow">
-                <div className="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <BookOpen className="w-10 h-10 text-accent" />
-                </div>
-                <h3 className="text-2xl font-serif font-bold text-primary mb-4">
-                  発見
-                </h3>
-                <p className="text-text japanese-text">
-                  AIが本棚から読書傾向を分析。
-                  同じ興味を持つ人や、
-                  新しい本との出会いを創出します。
-                </p>
-              </div>
-              <div className="text-center p-8 rounded-lg hover:shadow-lg transition-shadow">
-                <div className="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Heart className="w-10 h-10 text-accent" />
-                </div>
-                <h3 className="text-2xl font-serif font-bold text-primary mb-4">
-                  継承
-                </h3>
-                <p className="text-text japanese-text">
-                  大切な人の蔵書を適切に継承。
-                  その人の知的世界を、
-                  必要とする人へつなぎます。
-                </p>
-              </div>
-              <div className="text-center p-8 rounded-lg hover:shadow-lg transition-shadow">
-                <div className="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Users className="w-10 h-10 text-accent" />
-                </div>
-                <h3 className="text-2xl font-serif font-bold text-primary mb-4">
-                  共有
-                </h3>
-                <p className="text-text japanese-text">
-                  質の高い知的コミュニティ。
-                  深い対話と学びが生まれる
-                  場を提供します。
-                </p>
-              </div>
+              <Card className="text-center border-none shadow-lg hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <div className="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <BookOpen className="w-10 h-10 text-accent" />
+                  </div>
+                  <CardTitle className="text-2xl font-serif text-primary">
+                    発見
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-base japanese-text text-foreground">
+                    AIが本棚から読書傾向を分析。
+                    同じ興味を持つ人や、
+                    新しい本との出会いを創出します。
+                  </CardDescription>
+                </CardContent>
+              </Card>
+              <Card className="text-center border-none shadow-lg hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <div className="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Heart className="w-10 h-10 text-accent" />
+                  </div>
+                  <CardTitle className="text-2xl font-serif text-primary">
+                    継承
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-base japanese-text text-foreground">
+                    大切な人の蔵書を適切に継承。
+                    その人の知的世界を、
+                    必要とする人へつなぎます。
+                  </CardDescription>
+                </CardContent>
+              </Card>
+              <Card className="text-center border-none shadow-lg hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <div className="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Users className="w-10 h-10 text-accent" />
+                  </div>
+                  <CardTitle className="text-2xl font-serif text-primary">
+                    共有
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-base japanese-text text-foreground">
+                    質の高い知的コミュニティ。
+                    深い対話と学びが生まれる
+                    場を提供します。
+                  </CardDescription>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
@@ -131,13 +144,12 @@ export default function Home() {
               </div>
             </div>
             <div className="text-center mt-12">
-              <Link
-                href="/upload"
-                className="inline-flex items-center px-8 py-4 bg-accent text-white rounded-full text-lg font-medium hover:bg-accent-dark transition-colors shadow-lg"
-              >
-                今すぐ始める
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
+              <Button asChild variant="secondary" size="lg" className="rounded-full px-8 py-6 text-lg bg-accent hover:bg-accent/90 text-accent-foreground">
+                <Link href="/upload">
+                  今すぐ始める
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
+              </Button>
             </div>
           </div>
         </section>

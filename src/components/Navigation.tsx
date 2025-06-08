@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { BookOpen, Menu, X } from 'lucide-react'
 import { useState } from 'react'
+import { Button } from '@/components/ui/button'
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -26,12 +27,11 @@ export default function Navigation() {
             >
               使い方
             </Link>
-            <Link
-              href="/upload"
-              className="px-6 py-2 bg-primary text-white rounded-full hover:bg-primary-dark transition-colors"
-            >
-              体験を始める
-            </Link>
+            <Button asChild className="rounded-full">
+              <Link href="/upload">
+                体験を始める
+              </Link>
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -53,13 +53,13 @@ export default function Navigation() {
             >
               使い方
             </Link>
-            <Link
-              href="/upload"
-              className="block mx-4 my-2 px-6 py-3 bg-primary text-white rounded-full text-center hover:bg-primary-dark transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              体験を始める
-            </Link>
+            <div className="mx-4 my-2">
+              <Button asChild className="w-full rounded-full" onClick={() => setIsMenuOpen(false)}>
+                <Link href="/upload">
+                  体験を始める
+                </Link>
+              </Button>
+            </div>
           </div>
         )}
       </div>

@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Camera, Upload, ArrowLeft, Loader2 } from 'lucide-react'
 import Navigation from '@/components/Navigation'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export default function UploadPage() {
   const router = useRouter()
@@ -72,94 +74,107 @@ export default function UploadPage() {
           </h1>
 
           {!selectedImage ? (
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center">
-                <Camera className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                <p className="text-lg text-gray-600 mb-6 japanese-text">
-                  本棚の写真を選択してください
-                </p>
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  accept="image/*"
-                  onChange={handleFileSelect}
-                  className="hidden"
-                />
-                <button
-                  onClick={() => fileInputRef.current?.click()}
-                  className="inline-flex items-center px-6 py-3 bg-primary text-white rounded-full hover:bg-primary-dark transition-colors"
-                >
-                  <Upload className="w-5 h-5 mr-2" />
-                  画像を選択
-                </button>
-              </div>
-            </div>
+            <Card className="shadow-lg">
+              <CardContent className="p-8">
+                <div className="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center">
+                  <Camera className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                  <p className="text-lg text-muted-foreground mb-6 japanese-text">
+                    本棚の写真を選択してください
+                  </p>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileSelect}
+                    className="hidden"
+                  />
+                  <Button
+                    onClick={() => fileInputRef.current?.click()}
+                    className="rounded-full"
+                  >
+                    <Upload className="w-5 h-5 mr-2" />
+                    画像を選択
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
           ) : (
             <div className="space-y-6">
-              <div className="bg-white rounded-lg shadow-lg p-6">
-                <h2 className="text-xl font-bold text-primary mb-4">
-                  選択した画像
-                </h2>
-                <img
-                  src={selectedImage}
-                  alt="本棚"
-                  className="w-full rounded-lg"
-                />
-              </div>
+              <Card className="shadow-lg">
+                <CardHeader>
+                  <CardTitle className="text-xl font-serif text-primary">
+                    選択した画像
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <img
+                    src={selectedImage}
+                    alt="本棚"
+                    className="w-full rounded-lg"
+                  />
+                </CardContent>
+              </Card>
 
               {!isProcessing && recognizedBooks.length === 0 && (
                 <div className="text-center">
-                  <button
+                  <Button
                     onClick={handleUpload}
-                    className="px-8 py-4 bg-accent text-white rounded-full text-lg font-medium hover:bg-accent-dark transition-colors shadow-lg"
+                    size="lg"
+                    className="rounded-full px-8 py-6 text-lg bg-accent hover:bg-accent/90 text-accent-foreground"
                   >
                     書籍を認識する
-                  </button>
+                  </Button>
                 </div>
               )}
 
               {isProcessing && (
-                <div className="bg-white rounded-lg shadow-lg p-8">
-                  <div className="flex flex-col items-center">
-                    <Loader2 className="w-12 h-12 text-primary animate-spin mb-4" />
-                    <p className="text-lg text-gray-600 japanese-text">
-                      書籍を認識中...
-                    </p>
-                  </div>
-                </div>
+                <Card className="shadow-lg">
+                  <CardContent className="p-8">
+                    <div className="flex flex-col items-center">
+                      <Loader2 className="w-12 h-12 text-primary animate-spin mb-4" />
+                      <p className="text-lg text-muted-foreground japanese-text">
+                        書籍を認識中...
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
               )}
 
               {recognizedBooks.length > 0 && (
-                <div className="bg-white rounded-lg shadow-lg p-6">
-                  <h2 className="text-xl font-bold text-primary mb-4">
-                    認識された書籍（{recognizedBooks.length}冊）
-                  </h2>
-                  <div className="space-y-3 mb-6">
-                    {recognizedBooks.map((book, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center p-3 bg-gray-50 rounded-lg"
-                      >
-                        <div className="flex-1">
-                          <h3 className="font-bold text-gray-800">
-                            {book.title}
-                          </h3>
-                          <p className="text-sm text-gray-600">
-                            {book.author} · {book.genre}
-                          </p>
+                <Card className="shadow-lg">
+                  <CardHeader>
+                    <CardTitle className="text-xl font-serif text-primary">
+                      認識された書籍（{recognizedBooks.length}冊）
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3 mb-6">
+                      {recognizedBooks.map((book, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center p-3 bg-muted rounded-lg"
+                        >
+                          <div className="flex-1">
+                            <h3 className="font-bold text-foreground">
+                              {book.title}
+                            </h3>
+                            <p className="text-sm text-muted-foreground">
+                              {book.author} · {book.genre}
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="text-center">
-                    <button
-                      onClick={handleConfirm}
-                      className="px-8 py-3 bg-primary text-white rounded-full hover:bg-primary-dark transition-colors"
-                    >
-                      次へ進む
-                    </button>
-                  </div>
-                </div>
+                      ))}
+                    </div>
+                    <div className="text-center">
+                      <Button
+                        onClick={handleConfirm}
+                        className="rounded-full px-8"
+                      >
+                        次へ進む
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
               )}
             </div>
           )}
